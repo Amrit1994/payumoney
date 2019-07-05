@@ -1,0 +1,2 @@
+$(document).ready(function(){setTimeout(popup);function popup(){$("#logindiv").css("display","block");}
+$("#login #cancel").click(function(){$(this).parent().parent().hide();$('body').css('overflow','auto');});$("#onclick").click(function(){$("#contactdiv").css("display","block");});$("#contact #cancel").click(function(){$(this).parent().parent().hide();$('body').css('overflow','auto');});});

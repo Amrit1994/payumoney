@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Talent of India</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css" />
+
+<script>
+function pdff(){	 
+	 var HTML_Width = $(".canvas_div_pdf").width();
+	 var HTML_Height = $(".canvas_div_pdf").height();
+	 var top_left_margin = 15;
+	 var PDF_Width = HTML_Width+(top_left_margin*2);
+	 var PDF_Height = (PDF_Width*1.5)+(top_left_margin*2);
+	 var canvas_image_width = HTML_Width;
+	 var canvas_image_height = HTML_Height;
+	 var totalPDFPages = Math.ceil(HTML_Height/PDF_Height)-1;
+	 html2canvas($(".canvas_div_pdf")[0],{allowTaint:true}).then(function(canvas) {
+	 canvas.getContext('2d');
+	 var imgData = canvas.toDataURL("image/jpeg", 1.0);
+	 var pdf = new jsPDF('p', 'pt',  [PDF_Width, PDF_Height]);
+	     pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin,canvas_image_width,canvas_image_height);
+	   for (var i = 1; i <= totalPDFPages; i++) { 
+	    pdf.addPage(PDF_Width, PDF_Height);
+	    pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+	   }
+	   alert(-(PDF_Height*i)+(top_left_margin*4));
+	   pdf.save("HTML-Document.pdf");
+	 });
+};     
+</script>
+</head>
+
+<body class=bck1 >
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="js/jspdf.debug.js"></script>
+<script src="js/jspdf.min.js"></script>
+<script src="https://mrrio.github.io/jsPDF/dist/jspdf.debug.js"></script>
+<script src="https://mrrio.github.io/jsPDF/examples/js/basic.js"></script>
+<script src="http://html2canvas.hertzen.com/build/html2canvas.js"></script>
+<script src="js/html2canvas.js"></script>
+<button type="button" id="pdfDownloader" onclick="pdff()">Downloadddddddddd</button>
+
+<div  class="canvas_div_pdf" id="printDiv"  style="background-color:#FFF; border:1px solid #000; width:900px;">
+	<div class="row id">
+    	<div class="col-md-3 text-center">
+    	<img src="images/logo1.png" height="90px" width="180px"/>
+    	<br><br>
+        	Contestant Id :<span>123456</span>
+            
+        </div>
+        <div class="col-md-6 text-center">
+        	<h4>TALENT OF INDIA</h4>
+            Present by<br>
+           <b> Sur Sangam</b><br>
+            Audition Registration Form
+        </div>
+        <div class="col-md-3 photo text-center">
+        	<img src="images/bg.jpg">
+        </div>
+        </div>
+      
+        	<form class="original-form">
+              <div class="row">
+            	Name:<input type="text" placeholder="first name" class="pname1 text-center">
+                <input type="text" placeholder="middle name" class="pnam text-center">
+                <input type="text" placeholder="last name" class="pnam text-center">
+                </div>
+              <div class="row in">
+            	Father's Name:<input type="text" placeholder="first name" class="pname2 text-center">
+                <input type="text" placeholder="middle name" class="pname2 text-center">
+                <input type="text" placeholder="last name" class="pname2 text-center">
+                </div>
+                 <div class="row in">
+            	Mother's Name:<input type="text" placeholder="first name" class="pname2 text-center">
+            	 <input type="text" placeholder="middle name" class="pname2 text-center">
+                <input type="text" placeholder="last name" class="pname2 text-center">
+                </div>
+                   <div class="row in">
+                   <div class="col-md-6 mname">
+            	D.O.B:<input type="text"   placeholder="Enter d.o.b" class=" dob1  text-center">
+                 </div>
+                  <div class="col-md-6">
+            	 Mobile:<input type="text" placeholder="Enter number" class="dob1 text-center">
+                 </div>
+                </div>
+                <div class="row in">
+                   <div class="col-md-6 mname">
+            	Email Id:<input type="mail"   placeholder="Enter d.o.b" class=" dob1  text-center">
+                 </div>
+                  <div class="col-md-6">
+            	Pincode:<input type="text" placeholder="Enter Pincode" class="dob1 text-center">
+                 </div>
+                 </div>
+               <div class="row in">
+            	Address:<input type="text" placeholder="Enter address" class="add"><br>
+            	<input type="text" class="addr"><br>
+                </div>  
+                 <div class="row in">
+                 <div class="col-md-6 state1">
+            	 State:<input type="text" placeholder="Enter state" class="dob1 text-center">
+                 </div>
+                  <div class="col-md-6">
+            	City:<input type="text" placeholder="Enter city" class="dob2 text-center">
+                 </div> 
+                </div>
+            </form>
+             <div class="row id1">
+             <div class="col-md-4 text-center">
+             	<h5 class="float-left">Payment Information:</h5>
+                </div>
+                <div class="col-md-4"></div>
+             </div>
+            <div class="row pay">
+             <div class="col-md-2"></div>
+             <div class="col-md-10">
+             	Refference No.:<input type="text"  class=" ref text-center"><br>
+                Registration Fee:<input type="text"  value="1000/-" class="ref text-center"><br>
+              <!--    Transaction charges :<input type="text"  class="add1 text-center"><br>
+                Amount Paid:<input type="text"   class="add text-center">-->
+                </div>
+             
+             </div> 
+             <div class="row id2">
+             <div class="col-md-4 text-center">
+             	<h5>Terms & Conditions:</h5>
+                </div>
+                <div class="col-md-4"></div>
+             </div>
+              <div class="row tc">
+             <div class="col-md-1"></div>
+             <div class="col-md-10">
+             	<ol>
+                <li>The competition is presented by “TALENT OF INDIA” (Looking for Star).</li>
+                <li>. I acknowledge that the purpose of the competition is the search for a recording artist (hereafter referred to as ‘I/me/my’) and the competition will require a musical and/or vocal performance before a panel of Judges. I understand the nature of the competition and in signing this agreement I hereby consent to the recording and use of my contribution to the competition on the terms and conditions herein stated.</li>
+                <li>The competition requires a non-refundable entrance fee to complete an entry; this covers administration costs plus my audition at my selected region. The entrance fee does not cover any contestant expenses such as travel. At the Company’s discretion and where possible alternative audition dates will be offered if in the unlikely event an audition is cancelled or if you are unable to attend your audition. Submission of an application does not guarantee the opportunity to audition or participate in the competition.</li>
+                <li>. I agree to make myself available, at my own expense, at such times and in such locations as the Company may reasonably require in respect of the competition including without limitation rehearsals, publicity, press calls, photographs, recordings and/or other contributions. Such events will be organised and paid for by the Company. I understand that I am not entitled to receive exposure to such events.</li>
+                <li>No filming, recording or photography will be permitted at any of the event nights unless agreed in writing by the Company 7 days prior to an event that will cost as per the company norms.</li>
+                <li>The Company (or other such company as chosen by the Company) may film and/or record performances at the events. I agree to the use of this material by the Company for marketing and promotional purposes, including but not limited to domestic (State Level), national and international broadcast, including rights to reproduce and edit footage. The Company will own all intellectual property rights in any film and sound recording of the performances</li>
+                <li>I am free to enter into this agreement and hereby agree to indemnify the Company in respect of all actions, proceedings, claims, damages and other liabilities which may be brought against or incurred by the Company as a result of the breach of any of my warranties, representations or obligations contained in this agreement. I agree that in the event of any breach of this agreement by the Company I shall not be entitled to injunct the competition and any legal remedy I may have shall lie in an action at law for damages only.</li>
+                <li>I hereby warrant that I have not entered into any commercial, sponsorship or other agreement or arrangement with any person, firm or company in respect of my entry in the competition and/or musical, musical writing and/or performing abilities and will not do so.</li>
+                <li>The overall winning prize to the winning contestant, of “TALENT OF INDIA” is recording studio time to record their Single track and a video of the best single plus extensive media promotion from a professional PR company. (As per Mention Below) 
+<ul>
+<li>First Prize	T-series (Track Record With Video)	1</li>
+<li>Second Prize	Other Track Only Audio	1</li>
+<li>Third Prize	Cash Prize*	*</li>
+</ul>
+</li>
+                <li>Competition finalists (TOP 10), defined as any act making the Grand Final, acknowledge and agree to make themselves available for appearances and promotion for an 18 month period from the end of the competition for a minimum of 5 times (Without Cost). 
+                These will be at such times and in such locations as the Company may reasonably require in respect of the competition including without limitation showcases, Regional Finals and the Grand Final for the following year, interviews, publicity, press calls, photographs, recordings and/or other contributions. I agree to attend such events and will advise of (and) provide receipts to the Company for reimbursement of any reasonable travel expenses incurred.</li>
+                <li>The Company will entertain only those contestants who will be selected for Mega Auditions. All expenses (Food & Accommodations) Etc. will be afforded by TALENT OF INDIA.</li>
+                <li>Contest Organiser shall not be responsible for any technical disruption and/or failure/ server problems and/ or any other difficulties of such nature, due to which the participant is unable to participate in the Contest.</li>
+                <li>I acknowledge and agree to abide fully by the rules, regulations, terms and conditions for this competition (the “Rules”). I agree to observe all procedures and obey all reasonable instructions in force or given by a member of the Company and/or any location staff in connection with the competition and the management of the locations and the fire safety and security arrangements in those locations.</li>
+                <li>I acknowledge and agree that if I’m successful at the auditions & Winner I will be given tickets to sell for the live Regional Final show which I will try my best to sell to family, friends and fans.</li>
+                <li>I acknowledge that the Company reserve the right to amend the Rules (including without limitation verbally) or terminate the competition at any time without liability to me. The Company’s decisions shall be final.</li>
+                 <li>I acknowledge that the Company reserve the right to amend the Rules (including without limitation verbally) or terminate the competition at any time without liability to me. The Company’s decisions shall be final.</li>
+                 <li>If I am under 18 years old I must obtain the consent of my parent(s) or legal guardian(s) and enter their details as provided in the application form prior to my entry into the competition.</li>
+                   <li>I must be resident in the INDIA. I may be asked to provide the Company with supporting documentation in order to substantiate this (i.e. birth certificate and/or valid passport, Gov. Proofs). I acknowledge that the Company reserves the right to require at any time proof of my identity and/or eligibility.</li>
+                     <li> All personal details and/or information given in my application either in this form or otherwise must be truthful, accurate and in no way misleading. I undertake to inform the Company immediately if any such information becomes inaccurate.</li> 
+                      <li>I acknowledge that the Company reserves the right to remove or disqualify me from the competition at their absolute discretion and that the decision of the Company is final. I acknowledge that the Company will have no liability to me if I am unable to attend or take part in the competition.</li>  
+                     <li>The Company reserves the right to disqualify any contestant if they supply untruthful, inaccurate or misleading personal details and/or information, have failed to abide by the Rules and/or are in breach of the terms hereof.</li> 
+                      <li>The Company reserves the right to disqualify any contestant if they are deemed to be acting outside the spirit of the competition. The Company’s decisions shall be final.</li> 
+                       <li>The Company will endeavour to operate the competition and apply the Rules and conditions of the competition as devised by the Company.</li>
+                       <li>If any provision of this agreement is adjudged by a court to be void or unenforceable such provision shall no way affect any other provisions of this agreement, the application of the provision in any other circumstances or the validity or enforceability of this agreement and such provision shall be curtailed and limited only to the extent necessary to bring it within legal requirement.</li>
+                       <li>The courts of PUNJAB & HARYANA shall have sole jurisdiction in relation to the terms and conditions of the agreement contained in this release which shall be interpreted according to the laws of INDIA.</li>
+                       <li>Lastly have fun!</li>
+                </ol>
+                </div>
+                 <div class="col-md-1"></div>
+             </div>
+             <div class="row sig">
+              <div class="col-md-2"></div>
+             	<div class="col-md-4">
+                	Date:<input type="text" class="pname">
+                </div>
+                	<div class="col-md-4 text-center">
+                	Signature:&nbsp;<img src="images/bg.jpg" height="50px" width="100px" class="pname">
+                </div>
+                 <div class="col-md-2"></div>
+             </div> 
+        </div>
+    </div>
+</div>
+</body>
+</html>
